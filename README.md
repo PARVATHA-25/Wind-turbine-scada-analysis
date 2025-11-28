@@ -6,7 +6,6 @@
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)](https://www.tensorflow.org/)
 
 A comprehensive machine learning project for analyzing wind turbine SCADA (Supervisory Control and Data Acquisition) data to predict failures, detect anomalies, and optimize performance.
-
 ---
 
 ## 📋 Table of Contents
@@ -53,50 +52,42 @@ Wind turbines are critical infrastructure for renewable energy generation. This 
 | **Time-Series Forecasting** | LSTM-based prediction for 4 SCADA parameters | TensorFlow, Keras |
 | **Anomaly Detection** | Hybrid Isolation Forest + Power Curve Deviation | scikit-learn |
 | **Performance Scoring** | AI-powered scoring system with automated suggestions | Custom Algorithm |
-| **Deep Learning** | Transfer Learning CNN with Grad-CAM explainability | EfficientNetB3, Grad-CAM |
 
 ---
 
 ## 📁 Project Structure
 
 ```
-wind-turbine-analysis/
+wind-turbine-scada-analysis/
 │
-├── dataset/                       # Raw SCADA data 
-│    └── original.csv
-|    └── preprocessed.csv
-|
-├── task1/                          # Exploratory Data Analysis
-│   └── task1_eda.py
-│   └── task1_visualizations
-|
-├── task2/                          # Time-Series Forecasting (LSTM models)
-│   └── task2_forecasting.py
-│   └── task2_visualizations
-|
-├── task3/                          # Anomaly Detection
-│   └── task3_anomaly_detection.py
-│   └── task3_visualizations
-|
-├── task4/                          # AI Performance Scoring Module
-│   └── task4_performance_score.py
-│   └── task4_visualizations
-|
-|── task5/                          # CNN classifier
-│   └── task5_CNN.py
-│   └── task5_visualizations
-|
-├── model/                          # Saved ML/DL models
-│   ├── model_active_power.h5
+├── data/
+│   └── T1.csv                          # SCADA dataset
+│
+├── notebooks/
+│   ├── task1_eda.py                    # Exploratory Data Analysis
+│   ├── task2_forecasting.py            # Time-series forecasting (LSTM)
+│   ├── task3_anomaly_detection.py      # Anomaly detection
+│   ├── task4_performance_score.py      # AI Performance scorer
+│   └── task5_cnn_classifier.py         # CNN with Grad-CAM
+│
+├── models/
+│   ├── model_active_power.h5           # Trained LSTM models
 │   ├── model_wind_speed.h5
 │   ├── model_theoretical_power.h5
 │   ├── model_wind_direction.h5
-│   └── task5_cnn_classifier_final.h5
+│   └── task5_cnn_classifier_final.h5   # CNN classifier
 │
-├── requirements.txt                # Python dependencies
-├── README.md                       # Project documentation
-└── LICENSE                         # MIT License
-                        
+├── results/
+│   ├── visualizations/                 # All generated plots
+│   ├── metrics/                        # Performance metrics
+│   └── reports/                        # Summary reports
+│
+├── docs/
+│   └── technique_analysis.md           # Detailed methodology analysis
+│
+├── requirements.txt                     # Python dependencies
+├── README.md                           # This file
+└── LICENSE                             # MIT License
 ```
 
 ---
@@ -162,52 +153,54 @@ Pillow>=9.5.0
 ## 🔬 Tasks & Methodology
 
 ### Task 1: Exploratory Data Analysis (EDA)
-Objective: Understand data distribution, identify patterns, and clean the dataset
-Methodology:
 
--Initial Data Assessment
-Load and inspect 50,530 SCADA records
-Check for missing values and duplicates
-Analyze data types and basic statistics
+**Objective**: Understand data distribution, identify patterns, and clean the dataset
 
--Outlier Detection & Removal
-Applied 3-Sigma rule (Z-score method) for outlier detection
-Formula: |value - mean| > 3 × std_deviation
-Identified outliers in all 4 parameters
-Outliers removed: Wind Speed (228 records, 0.45%)
-Reasoning: Sensor errors or extreme weather events that skew analysis
+**Methodology**:
+1. **Initial Data Assessment**
+   - Load and inspect 50,530 SCADA records
+   - Check for missing values and duplicates
+   - Analyze data types and basic statistics
 
--Statistical Analysis
-Descriptive statistics (mean, median, std, skewness, kurtosis)
-Distribution analysis for all parameters
-Correlation matrix to identify relationships
+2. **Outlier Detection & Removal**
+   - Applied **3-Sigma rule (Z-score method)** for outlier detection
+   - Formula: `|value - mean| > 3 × std_deviation`
+   - Identified outliers in all 4 parameters
+   - **Outliers removed**: Wind Speed (228 records, 0.45%)
+   - Reasoning: Sensor errors or extreme weather events that skew analysis
 
--Visualization
-Time-series trends for all 4 parameters
-Power curve analysis (Wind Speed vs Active Power)
-Distribution histograms (before/after outlier removal)
-Correlation heatmap
+3. **Statistical Analysis**
+   - Descriptive statistics (mean, median, std, skewness, kurtosis)
+   - Distribution analysis for all parameters
+   - Correlation matrix to identify relationships
 
--Key Findings (After Outlier Removal):
-Dataset cleaned: 50,302 records (228 outliers removed)
-Performance Ratio: 87.64%
-Underperformance instances: 71.37% (expected in real-world scenarios due to wind variability, turbine controls, and environmental factors)
-Wind speed anomalies detected: 228 (0.45%) - removed for cleaner analysis
-Strong correlation: Wind Speed ↔ Active Power (r = 0.89)
+4. **Visualization**
+   - Time-series trends for all 4 parameters
+   - Power curve analysis (Wind Speed vs Active Power)
+   - Distribution histograms (before/after outlier removal)
+   - Correlation heatmap
 
--Impact of Outlier Removal:
-Improved model training stability
-More accurate statistical measures
-Better visualization clarity
-Reduced noise in forecasting models
+**Key Findings** (After Outlier Removal):
+- **Dataset cleaned**: 50,302 records (228 outliers removed)
+- **Performance Ratio**: 87.64%
+- **Underperformance instances**: 71.37% (expected in real-world scenarios due to wind variability, turbine controls, and environmental factors)
+- **Wind speed anomalies detected**: 228 (0.45%) - removed for cleaner analysis
+- **Strong correlation**: Wind Speed ↔ Active Power (r = 0.89)
 
-Visualizations Generated:
+**Impact of Outlier Removal**:
+- Improved model training stability
+- More accurate statistical measures
+- Better visualization clarity
+- Reduced noise in forecasting models
 
-✅ Time-series trends (4 parameters)
-✅ Power curve scatter plot
-✅ Distribution histograms
-✅ Correlation heatmap
-✅ Box plots (outlier identification)
+**Visualizations Generated**:
+- ✅ Time-series trends (4 parameters)
+- ✅ Power curve scatter plot
+- ✅ Distribution histograms
+- ✅ Correlation heatmap
+- ✅ Box plots (outlier identification)
+
+---
 
 ### Task 2: Time-Series Forecasting
 
@@ -365,78 +358,6 @@ The system generates context-aware recommendations:
 
 ---
 
-### Task 5: Deep Learning CNN Classifier
-
-**Objective**: Build CNN classifier with visual explainability (Grad-CAM)
-
-**Approach Selected**: **Transfer Learning with EfficientNetB3**
-
-#### Why EfficientNetB3?
-
-| Model | Accuracy | Parameters | Speed | Selected |
-|-------|----------|------------|-------|----------|
-| VGG16 | Good | 138M | Slow | ❌ |
-| ResNet50 | Good | 25M | Medium | ⚠️ |
-| **EfficientNetB3** | ✅ Excellent | ✅ 12M | ✅ Fast | ✅ **BEST** |
-| ViT | Excellent | 86M | Slow | ❌ |
-
-**Advantages**:
-- Best accuracy-to-parameters ratio
-- Compound scaling methodology
-- Pre-trained on ImageNet
-- Efficient inference
-
-#### Architecture
-
-```python
-EfficientNetB3 (frozen initially)
-    ↓
-GlobalAveragePooling2D
-    ↓
-BatchNormalization
-    ↓
-Dense(256, ReLU) → Dropout(0.5)
-    ↓
-Dense(128, ReLU) → Dropout(0.3)
-    ↓
-Dense(num_classes, Softmax)
-```
-
-#### Training Strategy
-
-**Phase 1** (10 epochs): Frozen base model
-- Train only top layers
-- Learn task-specific features
-
-**Phase 2** (20 epochs): Fine-tuning
-- Unfreeze last 20 layers
-- Adapt pre-trained features
-- Lower learning rate (0.0001)
-
-#### Grad-CAM Explainability
-
-Grad-CAM (Gradient-weighted Class Activation Mapping) shows **which parts of the image** influenced the model's decision.
-
-**Benefits**:
-- Visual explainability
-- Model debugging
-- Trust in AI decisions
-- Regulatory compliance
-
-**Expected Performance** (depends on dataset):
-- Accuracy: **>90%**
-- Top-2 Accuracy: **>95%**
-- Training Time: **~20-30 minutes** (GPU)
-
-**Deliverables**:
-- ✅ Confusion Matrix
-- ✅ Sample Predictions Grid (16 images)
-- ✅ Grad-CAM Overlays (8 images)
-- ✅ Training history plots
-- ✅ Saved model (.h5)
-
----
-
 ## 📊 Results
 
 ### Overall Performance Summary
@@ -447,7 +368,6 @@ Grad-CAM (Gradient-weighted Class Activation Mapping) shows **which parts of the
 | **Task 2: Forecasting** | LSTM R² Score | >0.85 (all variables) | ✅ |
 | **Task 3: Anomaly Detection** | Precision/Recall | >0.80 / >0.75 | ✅ |
 | **Task 4: AI Scorer** | Performance Score | 78.5/100 avg | ✅ |
-| **Task 5: CNN** | Accuracy | >90% (dataset dependent) | ✅ |
 
 ### Key Achievements
 
@@ -455,8 +375,6 @@ Grad-CAM (Gradient-weighted Class Activation Mapping) shows **which parts of the
 2. **4 LSTM models** trained for multi-horizon forecasting
 3. **~3,600 anomalies** detected using hybrid approach
 4. **Intelligent scoring system** with automated maintenance suggestions
-5. **Transfer learning** achieved high accuracy with explainable AI
-
 ---
 
 ## 🛠️ Technical Details
@@ -471,10 +389,6 @@ Grad-CAM (Gradient-weighted Class Activation Mapping) shows **which parts of the
 **Machine Learning**:
 - `scikit-learn` - Preprocessing, Isolation Forest
 - `tensorflow`, `keras` - Deep learning (LSTM, CNN)
-
-**Specialized**:
-- `opencv-python` - Image processing
-- `Grad-CAM` - Model explainability
 
 ### Hardware Requirements
 
@@ -515,14 +429,6 @@ python notebooks/task3_anomaly_detection.py
 python notebooks/task4_performance_score.py
 ```
 **Outputs**: Performance scores CSV, state distribution, automated suggestions
-
-### Task 5: CNN Classifier
-```bash
-# Update dataset paths in script first
-python notebooks/task5_cnn_classifier.py
-```
-**Outputs**: Trained CNN model, confusion matrix, Grad-CAM visualizations
-
 ---
 
 ## 🔮 Future Improvements
@@ -537,66 +443,3 @@ python notebooks/task5_cnn_classifier.py
 - [ ] **Weather data integration** for improved predictions
 
 ---
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👤 Author
-
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
-
----
-
-## 🙏 Acknowledgments
-
-- **Kaggle** for the Wind Turbine SCADA dataset
-- **TensorFlow** team for excellent deep learning framework
-- **EfficientNet** authors for the model architecture
-- **Grad-CAM** authors for explainability technique
-
----
-
-## 📚 References
-
-1. Berkerisen. (2018). *Wind Turbine SCADA Dataset*. Kaggle.
-2. Tan, M., & Le, Q. (2019). *EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks*. ICML.
-3. Selvaraju, R. R., et al. (2017). *Grad-CAM: Visual Explanations from Deep Networks*. ICCV.
-4. Hochreiter, S., & Schmidhuber, J. (1997). *Long Short-Term Memory*. Neural Computation.
-5. Liu, F. T., et al. (2008). *Isolation Forest*. ICDM.
-
----
-
-## 📞 Support
-
-For questions or support, please:
-- Open an issue in the repository
-- Contact via email
-- Check the [documentation](docs/)
-
----
-
-<div align="center">
-
-**⭐ If you find this project helpful, please consider giving it a star!**
-
-Made with ❤️ for renewable energy optimization
-
-</div>
