@@ -58,38 +58,43 @@ Wind turbines are critical infrastructure for renewable energy generation. This 
 ## 📁 Project Structure
 
 ```
-wind-turbine-scada-analysis/
+wind-turbine-analysis/
 │
-├── data/
-│   └── T1.csv                          # SCADA dataset
-│
-├── notebooks/
-│   ├── task1_eda.py                    # Exploratory Data Analysis
-│   ├── task2_forecasting.py            # Time-series forecasting (LSTM)
-│   ├── task3_anomaly_detection.py      # Anomaly detection
-│   ├── task4_performance_score.py      # AI Performance scorer
-│   └── task5_cnn_classifier.py         # CNN with Grad-CAM
-│
-├── models/
-│   ├── model_active_power.h5           # Trained LSTM models
+├── dataset/                       # Raw SCADA data 
+│    └── original.csv
+|    └── preprocessed.csv
+|
+├── task1/                          # Exploratory Data Analysis
+│   └── task1_eda.py
+│   └── task1_visualizations
+|
+├── task2/                          # Time-Series Forecasting (LSTM models)
+│   └── task2_forecasting.py
+│   └── task2_visualizations
+|
+├── task3/                          # Anomaly Detection
+│   └── task3_anomaly_detection.py
+│   └── task3_visualizations
+|
+├── task4/                          # AI Performance Scoring Module
+│   └── task4_performance_score.py
+│   └── task4_visualizations
+|
+|── task5/                          # CNN classifier
+│   └── task5_CNN.py
+│   └── task5_visualizations
+|
+├── model/                          # Saved ML/DL models
+│   ├── model_active_power.h5
 │   ├── model_wind_speed.h5
 │   ├── model_theoretical_power.h5
 │   ├── model_wind_direction.h5
-│   └── task5_cnn_classifier_final.h5   # CNN classifier
+│   └── task5_cnn_classifier_final.h5
 │
-├── results/
-│   ├── visualizations/                 # All generated plots
-│   ├── metrics/                        # Performance metrics
-│   └── reports/                        # Summary reports
-│
-├── docs/
-│   └── technique_analysis.md           # Detailed methodology analysis
-│
-├── requirements.txt                     # Python dependencies
-├── README.md                           # This file
-└── LICENSE                             # MIT License
+├── requirements.txt                # Python dependencies
+├── README.md                       # Project documentation
+└── LICENSE                         # MIT License
 ```
-
 ---
 
 ## 🚀 Installation
