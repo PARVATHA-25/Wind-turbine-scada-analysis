@@ -4,7 +4,6 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)](https://www.tensorflow.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 A comprehensive machine learning project for analyzing wind turbine SCADA (Supervisory Control and Data Acquisition) data to predict failures, detect anomalies, and optimize performance.
 
@@ -163,28 +162,52 @@ Pillow>=9.5.0
 ## 🔬 Tasks & Methodology
 
 ### Task 1: Exploratory Data Analysis (EDA)
+Objective: Understand data distribution, identify patterns, and clean the dataset
+Methodology:
 
-**Objective**: Understand data distribution, identify patterns, and detect initial anomalies
+-Initial Data Assessment
+Load and inspect 50,530 SCADA records
+Check for missing values and duplicates
+Analyze data types and basic statistics
 
-**Methodology**:
-- Statistical analysis (mean, median, std, skewness, kurtosis)
-- Time-series visualization for all parameters
-- Power curve analysis (Wind Speed vs Active Power)
-- Correlation matrix analysis
-- 3-Sigma rule for anomaly detection
+-Outlier Detection & Removal
+Applied 3-Sigma rule (Z-score method) for outlier detection
+Formula: |value - mean| > 3 × std_deviation
+Identified outliers in all 4 parameters
+Outliers removed: Wind Speed (228 records, 0.45%)
+Reasoning: Sensor errors or extreme weather events that skew analysis
 
-**Key Findings**:
-- Performance Ratio: **87.64%**
-- Underperformance instances: **71.37%** (expected in real-world scenarios)
-- Wind speed anomalies: **228 (0.45%)**
+-Statistical Analysis
+Descriptive statistics (mean, median, std, skewness, kurtosis)
+Distribution analysis for all parameters
+Correlation matrix to identify relationships
 
-**Visualizations**:
-- Time-series trends
-- Power curve scatter plot
-- Distribution histograms
-- Correlation heatmap
+-Visualization
+Time-series trends for all 4 parameters
+Power curve analysis (Wind Speed vs Active Power)
+Distribution histograms (before/after outlier removal)
+Correlation heatmap
 
----
+-Key Findings (After Outlier Removal):
+Dataset cleaned: 50,302 records (228 outliers removed)
+Performance Ratio: 87.64%
+Underperformance instances: 71.37% (expected in real-world scenarios due to wind variability, turbine controls, and environmental factors)
+Wind speed anomalies detected: 228 (0.45%) - removed for cleaner analysis
+Strong correlation: Wind Speed ↔ Active Power (r = 0.89)
+
+-Impact of Outlier Removal:
+Improved model training stability
+More accurate statistical measures
+Better visualization clarity
+Reduced noise in forecasting models
+
+Visualizations Generated:
+
+✅ Time-series trends (4 parameters)
+✅ Power curve scatter plot
+✅ Distribution histograms
+✅ Correlation heatmap
+✅ Box plots (outlier identification)
 
 ### Task 2: Time-Series Forecasting
 
