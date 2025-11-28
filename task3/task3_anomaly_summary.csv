@@ -1,0 +1,10 @@
+Metric,Value
+Total Records,50530
+Normal Points,30487
+Total Anomalies,20043
+Isolation Forest Anomalies,2527
+Underperformance Cases,18499
+Severe Underperformance,12863
+Anomaly Percentage,39.67%
+Mean Performance Ratio (Normal),122271.4035
+Mean Performance Ratio (Anomalous),-504.0876
