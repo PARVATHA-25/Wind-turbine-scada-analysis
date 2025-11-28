@@ -6,6 +6,7 @@
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)](https://www.tensorflow.org/)
 
 A comprehensive machine learning project for analyzing wind turbine SCADA (Supervisory Control and Data Acquisition) data to predict failures, detect anomalies, and optimize performance.
+
 ---
 
 ## 📋 Table of Contents
@@ -20,13 +21,10 @@ A comprehensive machine learning project for analyzing wind turbine SCADA (Super
   - [Task 2: Time-Series Forecasting](#task-2-time-series-forecasting)
   - [Task 3: Anomaly Detection](#task-3-anomaly-detection)
   - [Task 4: AI Performance Score](#task-4-ai-performance-score-generator)
-  - [Task 5: Deep Learning CNN](#task-5-deep-learning-cnn-classifier)
 - [Results](#-results)
 - [Technical Details](#-technical-details)
 - [Usage](#-usage)
 - [Future Improvements](#-future-improvements)
-- [Contributing](#-contributing)
-- [Author](#-author)
 
 ---
 
@@ -38,7 +36,6 @@ Wind turbines are critical infrastructure for renewable energy generation. This 
 - 🔮 Predict future performance metrics
 - 🚨 Detect anomalies and underperformance
 - 🎯 Generate intelligent performance scores
-- 🖼️ Classify turbine conditions using computer vision
 
 **Key Technologies**: Python, TensorFlow, Keras, scikit-learn, Pandas, NumPy, Matplotlib, Seaborn
 
@@ -89,12 +86,11 @@ wind-turbine-analysis/
 │   ├── model_wind_speed.h5
 │   ├── model_theoretical_power.h5
 │   ├── model_wind_direction.h5
-│   └── task5_cnn_classifier_final.h5
 │
 ├── requirements.txt                # Python dependencies
 ├── README.md                       # Project documentation
 └── LICENSE                         # MIT License
-```
+```                      
 ---
 
 ## 🚀 Installation
@@ -120,15 +116,28 @@ pip install -r requirements.txt
 ```
 
 ### Requirements
-```
+```txt
+# Core Data Science Libraries
 pandas>=1.5.0
 numpy>=1.23.0
 matplotlib>=3.6.0
 seaborn>=0.12.0
+
+# Machine Learning
 scikit-learn>=1.2.0
+
+# Deep Learning
 tensorflow>=2.12.0
-opencv-python>=4.7.0
-Pillow>=9.5.0
+keras>=2.12.0
+
+# Jupyter Environment
+jupyter>=1.0.0
+jupyterlab>=3.6.0
+ipykernel>=6.22.0
+
+# Utilities
+python-dateutil>=2.8.2
+tqdm>=4.65.0
 ```
 
 ---
@@ -380,6 +389,7 @@ The system generates context-aware recommendations:
 2. **4 LSTM models** trained for multi-horizon forecasting
 3. **~3,600 anomalies** detected using hybrid approach
 4. **Intelligent scoring system** with automated maintenance suggestions
+
 ---
 
 ## 🛠️ Technical Details
@@ -393,7 +403,7 @@ The system generates context-aware recommendations:
 
 **Machine Learning**:
 - `scikit-learn` - Preprocessing, Isolation Forest
-- `tensorflow`, `keras` - Deep learning (LSTM, CNN)
+- `tensorflow`, `keras` - Deep learning (LSTM)
 
 ### Hardware Requirements
 
@@ -411,29 +421,89 @@ The system generates context-aware recommendations:
 
 ## 💻 Usage
 
-### Task 1: EDA
-```bash
-python notebooks/task1_eda.py
-```
-**Outputs**: Statistical analysis, time-series plots, power curve, correlation matrix
+### Running Jupyter Notebooks
 
-### Task 2: Forecasting
+**Option 1: VS Code**
 ```bash
-python notebooks/task2_forecasting.py
-```
-**Outputs**: 4 trained LSTM models, prediction plots, metrics CSV
+# Open VS Code
+code .
 
-### Task 3: Anomaly Detection
-```bash
-python notebooks/task3_anomaly_detection.py
+# Install "Jupyter" extension if not already installed
+# Click on .ipynb files to open them
+# Run cells with Shift+Enter
 ```
-**Outputs**: Anomaly visualizations, detected anomalies CSV, severity heatmap
 
-### Task 4: Performance Scoring
+**Option 2: JupyterLab (Recommended)**
 ```bash
-python notebooks/task4_performance_score.py
+# Start JupyterLab
+jupyter lab
+
+# Open notebooks from the file browser
 ```
-**Outputs**: Performance scores CSV, state distribution, automated suggestions
+**Option 3: Jupyter Notebook**
+```bash
+# Start Jupyter Notebook
+jupyter notebook
+
+# Navigate to notebooks/ folder and open:
+# - task1.ipynb
+# - task2_forecasting.ipynb
+# - task3_anomaly_detection.ipynb
+# - task4_performance_score.ipynb
+# - task5_cnn_classifier.ipynb
+```
+**Option 4: Google Colab**
+```bash
+# Upload notebooks to Google Drive
+# Open with Google Colab
+# Upload T1.csv dataset when prompted
+```
+---
+
+### Task Execution Order
+
+**Task 1: EDA** (`task1.ipynb`)
+- Load cleaned dataset: `T1_cleaned.csv`
+- Run all cells (Ctrl+Enter or Shift+Enter)
+- **Outputs**: Statistical analysis, time-series plots, power curve, correlation matrix
+
+**Task 2: Forecasting** (`task2.ipynb`)
+- Ensure Task 1 is complete
+- Training time: ~5-10 minutes (CPU) or ~2-3 minutes (GPU)
+- **Outputs**: 4 trained LSTM models (.h5), prediction plots, metrics CSV
+
+**Task 3: Anomaly Detection** (`task3.ipynb`)
+- Uses cleaned data from Task 1
+- **Outputs**: Anomaly visualizations, detected anomalies CSV, severity heatmap
+
+**Task 4: Performance Scoring** (`task4.ipynb`)
+- Generates intelligent performance scores
+- **Outputs**: Performance scores CSV, state distribution, automated suggestions
+---
+
+### Quick Start Guide
+
+```bash
+# 1. Clone repository
+git clone https://github.com/PARVATHA-25/Wind-turbine-scada-analysis.git
+cd Wind-turbine-scada-analysis
+
+# 2. Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Start Jupyter
+jupyter notebook
+# or
+jupyter lab
+
+# 5. Open notebooks/ folder
+# 6. Run notebooks in order: task1 → task2 → task3 → task4 → task5
+```
+
 ---
 
 ## 🔮 Future Improvements
