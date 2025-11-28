@@ -1,0 +1,6 @@
+,Performance_Score,Performance_Score,Performance_Score,Performance_Score,Performance_Score,Power_Ratio,Wind_Utilization,Consistency_Score
+,mean,std,min,max,count,mean,mean,mean
+Turbine_State,,,,,,,,
+Good,85.68,0.58,85.05,87.62,42,100.0,38.27,90.14
+Moderate,76.67,3.79,70.0,84.97,28625,93.45,22.13,80.88
+Poor,64.51,6.53,20.08,70.0,9135,76.9,19.73,72.13
