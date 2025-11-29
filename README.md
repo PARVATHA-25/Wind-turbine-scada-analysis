@@ -190,6 +190,8 @@ tqdm>=4.65.0
    - Distribution histograms (before/after outlier removal)
    - Correlation heatmap
 
+![image alt](https://github.com/PARVATHA-25/Wind-turbine-scada-analysis/blob/51996d84b80ccefc96c97bcc1913dab376644366/task1/task1_timeseries_all_parameters.png)
+
 **Key Findings** (After Outlier Removal):
 - **Dataset cleaned**: 50,302 records (228 outliers removed)
 - **Performance Ratio**: 87.64%
