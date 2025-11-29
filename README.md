@@ -191,6 +191,7 @@ tqdm>=4.65.0
    - Correlation heatmap
 
 ![image alt](https://github.com/PARVATHA-25/Wind-turbine-scada-analysis/blob/51996d84b80ccefc96c97bcc1913dab376644366/task1/task1_timeseries_all_parameters.png)
+![image alt](https://github.com/PARVATHA-25/Wind-turbine-scada-analysis/blob/c9c9d9455584ba77fb01006730c7c7e9de30ab21/task1/task1_power_curve_after_cleaning.png)
 
 **Key Findings** (After Outlier Removal):
 - **Dataset cleaned**: 50,302 records (228 outliers removed)
