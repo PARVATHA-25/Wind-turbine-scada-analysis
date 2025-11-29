@@ -494,7 +494,7 @@ jupyter notebook
 
 ## 🔮 Future Improvements
 
-- [ ] **Real-time monitoring dashboard** using Streamlit/Dash
+- [ ] **Real-time monitoring dashboard** using Streamlit/Power BI
 - [ ] **Automated alert system** for critical anomalies
 - [ ] **Multi-turbine fleet analysis** for comparative insights
 - [ ] **Advanced forecasting** with Transformer models
