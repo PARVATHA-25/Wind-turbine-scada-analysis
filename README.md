@@ -96,20 +96,48 @@ wind-turbine-analysis/
 - pip
 - (Optional) GPU with CUDA for faster training
 
-### Setup
+### Quick Start Guide
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/wind-turbine-scada-analysis.git
-cd wind-turbine-scada-analysis
+# 1. Clone repository
+git clone https://github.com/PARVATHA-25/Wind-turbine-scada-analysis.git
+cd Wind-turbine-scada-analysis
 
-# Create virtual environment
+# 2. Create virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# Install dependencies
+# 3. Install dependencies
 pip install -r requirements.txt
+
+# 4. Start Jupyter
+jupyter notebook
+# or
+jupyter lab
+
+# 5. Open notebooks/ folder
+# 6. Run notebooks in order: task1 → task2 → task3 → task4 → task5
 ```
+### Task Execution Order
+
+**Task 1: EDA** (`task1.ipynb`)
+- Load cleaned dataset: `T1_cleaned.csv`
+- Run all cells (Ctrl+Enter or Shift+Enter)
+- **Outputs**: Statistical analysis, time-series plots, power curve, correlation matrix
+
+**Task 2: Forecasting** (`task2.ipynb`)
+- Ensure Task 1 is complete
+- Training time: ~5-10 minutes (CPU) or ~2-3 minutes (GPU)
+- **Outputs**: 4 trained LSTM models (.h5), prediction plots, metrics CSV
+
+**Task 3: Anomaly Detection** (`task3.ipynb`)
+- Uses cleaned data from Task 1
+- **Outputs**: Anomaly visualizations, detected anomalies CSV, severity heatmap
+
+**Task 4: Performance Scoring** (`task4.ipynb`)
+- Generates intelligent performance scores
+- **Outputs**: Performance scores CSV, state distribution, automated suggestions
+---
 
 ### Requirements
 ```txt
@@ -462,52 +490,6 @@ jupyter notebook
 # Open with Google Colab
 # Upload T1.csv dataset when prompted
 ```
----
-
-### Task Execution Order
-
-**Task 1: EDA** (`task1.ipynb`)
-- Load cleaned dataset: `T1_cleaned.csv`
-- Run all cells (Ctrl+Enter or Shift+Enter)
-- **Outputs**: Statistical analysis, time-series plots, power curve, correlation matrix
-
-**Task 2: Forecasting** (`task2.ipynb`)
-- Ensure Task 1 is complete
-- Training time: ~5-10 minutes (CPU) or ~2-3 minutes (GPU)
-- **Outputs**: 4 trained LSTM models (.h5), prediction plots, metrics CSV
-
-**Task 3: Anomaly Detection** (`task3.ipynb`)
-- Uses cleaned data from Task 1
-- **Outputs**: Anomaly visualizations, detected anomalies CSV, severity heatmap
-
-**Task 4: Performance Scoring** (`task4.ipynb`)
-- Generates intelligent performance scores
-- **Outputs**: Performance scores CSV, state distribution, automated suggestions
----
-
-### Quick Start Guide
-
-```bash
-# 1. Clone repository
-git clone https://github.com/PARVATHA-25/Wind-turbine-scada-analysis.git
-cd Wind-turbine-scada-analysis
-
-# 2. Create virtual environment
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. Start Jupyter
-jupyter notebook
-# or
-jupyter lab
-
-# 5. Open notebooks/ folder
-# 6. Run notebooks in order: task1 → task2 → task3 → task4 → task5
-```
-
 ---
 
 ## 🔮 Future Improvements
