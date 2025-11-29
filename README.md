@@ -247,6 +247,7 @@ Dense (forecast_horizon)   (None, 6)                 198
 =================================================================
 Total params: 128,582
 ```
+![image alt](https://github.com/PARVATHA-25/Wind-turbine-scada-analysis/blob/8beec880c857826a51c247f46cdd1d5eb6d3fb21/task2/task2_predictions_vs_actual.png)
 
 **Configuration**:
 - Window Size: 24 timesteps (4 hours)
@@ -263,7 +264,6 @@ Total params: 128,582
 | Wind Speed | ~0.8 m/s | ~0.5 m/s | >0.85 | <12% |
 | Theoretical Power | ~190 kWh | ~130 kWh | >0.88 | <9% |
 | Wind Direction | ~15° | ~10° | >0.75 | <15% |
-
 ---
 
 ### Task 3: Anomaly Detection
@@ -302,6 +302,7 @@ Thresholds:
 **3. Combined Detection**
 - Anomaly flagged if EITHER method detects it
 - Severity levels: Normal → Moderate → Severe → Critical
+![image alt]()
 
 **Results**:
 - Total Anomalies Detected: **~3,600 (7.1%)**
