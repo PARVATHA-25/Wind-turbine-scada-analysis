@@ -77,10 +77,6 @@ wind-turbine-analysis/
 │   └── task4_performance_score.py
 │   └── task4_visualizations
 |
-|── task5/                          # CNN classifier
-│   └── task5_CNN.py
-│   └── task5_visualizations
-|
 ├── model/                          # Saved ML/DL models
 │   ├── model_active_power.h5
 │   ├── model_wind_speed.h5
