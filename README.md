@@ -302,7 +302,9 @@ Thresholds:
 **3. Combined Detection**
 - Anomaly flagged if EITHER method detects it
 - Severity levels: Normal → Moderate → Severe → Critical
-![image alt]()
+
+![image alt](https://github.com/PARVATHA-25/Wind-turbine-scada-analysis/blob/048690ab0d92d02bd51e21f10b04035a65561d77/task3/task3_power_curve_anomalies.png)
+![image alt](https://github.com/PARVATHA-25/Wind-turbine-scada-analysis/blob/048690ab0d92d02bd51e21f10b04035a65561d77/task3/task3_timeseries_anomalies.png)
 
 **Results**:
 - Total Anomalies Detected: **~3,600 (7.1%)**
@@ -335,7 +337,6 @@ Performance_Score = (
     Consistency_Score × 0.20
 )
 ```
-
 #### Categorization
 
 | Score Range | Category | Status | Color |
@@ -343,6 +344,9 @@ Performance_Score = (
 | 85-100 | **Good** | ✅ Optimal performance | 🟢 Green |
 | 70-84 | **Moderate** | ⚠️ Acceptable, monitor | 🟡 Yellow |
 | 0-69 | **Poor** | 🚨 Immediate action needed | 🔴 Red |
+
+![image alt](https://github.com/PARVATHA-25/Wind-turbine-scada-analysis/blob/048690ab0d92d02bd51e21f10b04035a65561d77/task4/task4_performance_score_timeline.png)
+![image alt](https://github.com/PARVATHA-25/Wind-turbine-scada-analysis/blob/048690ab0d92d02bd51e21f10b04035a65561d77/task4/task4_state_distribution.png)
 
 #### Automated Suggestions
 
